@@ -63,6 +63,7 @@ namespace Preguntero
             this.txtSemanas.Name = "txtSemanas";
             this.txtSemanas.Size = new System.Drawing.Size(100, 20);
             this.txtSemanas.TabIndex = 2;
+            this.txtSemanas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSemanas_KeyPress);
             // 
             // label2
             // 
