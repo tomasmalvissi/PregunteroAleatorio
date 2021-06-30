@@ -37,11 +37,14 @@ namespace Preguntero
                         {
                             int horas = rdn.Next(8, 18);    //le asigno al random la hora laboral
                             int minutos = rdn.Next(60);
+                            int dias = rdn.Next(8);
                             TimeSpan ts = new TimeSpan(horas, minutos, 0);         //asigno la hora a la fecha que pickeo           
                             fecha = fecha.Date + ts;
-                            txtPreguntas.Text += fecha.ToString("dddd, dd MMMM yyyy HH:mm:ss") + " - " + pregunta[i] + "\n";
-                            fecha = fecha.AddDays(1);       //aumento la fecha
-                            switch (fecha.DayOfWeek)        //valido que cuando aumente la fecha no toque finde
+                            if (semana!=1)
+                            {
+                                fecha = fecha.AddDays(dias);
+                            }
+                            switch (fecha.DayOfWeek)        //valido que la fecha no toque finde
                             {
                                 case DayOfWeek.Sunday:
                                     fecha = fecha.AddDays(1);
@@ -49,9 +52,9 @@ namespace Preguntero
                                 case DayOfWeek.Saturday:
                                     fecha = fecha.AddDays(2);
                                     break;
-                                default:
-                                    break;
                             }
+                            txtPreguntas.Text += fecha.ToString("dddd, dd MMMM yyyy HH:mm:ss") + " - " + pregunta[i] + "\n";
+                            fecha = fecha.AddDays(7);
                         }
                     }
                     else
