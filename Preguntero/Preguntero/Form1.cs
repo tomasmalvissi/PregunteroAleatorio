@@ -75,9 +75,17 @@ namespace Preguntero
             else
             {
                 int semanas = int.Parse(txtSemanas.Text);
-                DateTime fechaini = dtpFechaIni.Value;
-                string[] preguntas = { "Pregunta1", "Pregunta2", "Pregunta3", "Pregunta4", "Pregunta5", "Pregunta6", "Pregunta7" };
-                RetornarPreguntas(semanas, fechaini, preguntas);
+                if (semanas <= 7)
+                {
+                    DateTime fechaini = dtpFechaIni.Value;
+                    string[] preguntas = { "Pregunta1", "Pregunta2", "Pregunta3", "Pregunta4", "Pregunta5", "Pregunta6", "Pregunta7" };
+                    RetornarPreguntas(semanas, fechaini, preguntas);
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese una semana menor o igual a 7", "Advertencia",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
         }
 
